@@ -71,6 +71,7 @@ echo "*-* Instalando Shel Zsh e Oh-my-zsh *-*"
 echo "Realizando backup do arquivo de configuração original"
 #cp ~/.zshrc ~/.zshrc.orig
 echo "Altere o tema padrao para o gallois"
+# Plugins = git / colored-man-pages / golang / terraform
 #nano ~/.zshrc
 echo "Altere o arquivo /bin/bash por /bin/zsh"
 #sudo nano /etc/passwd
