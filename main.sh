@@ -63,3 +63,14 @@ case $OPCAO in
         exit ;;
     *) "Opção desconhecida." ;
 esac
+echo
+echo "*-* Instalando Shel Zsh e Oh-my-zsh *-*"
+#sudo apt install -y zsh
+#zsh --version
+#sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+echo "Realizando backup do arquivo de configuração original"
+#cp ~/.zshrc ~/.zshrc.orig
+echo "Altere o tema padrao para o gallois"
+#nano ~/.zshrc
+echo "Altere o arquivo /bin/bash por /bin/zsh"
+#sudo nano /etc/passwd
