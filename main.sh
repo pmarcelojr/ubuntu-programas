@@ -16,8 +16,8 @@ echo
 echo "*-* Limpando o Sistema *-*"
 #sudo apt clean
 echo
-echo "*-* INSTALL GIT *-*"
-#sudo apt install git
+echo "*-* INSTALL GIT e Curl *-*"
+#sudo apt install git && curl -y
 echo
 echo "*-* CONFIG MOSTRA % BATERIA *-*"
 #gsettings set org.gnome.desktop.interface show-battery-percentage true
