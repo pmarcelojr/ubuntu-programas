@@ -7,7 +7,7 @@ sudo rm /var/lib/dpkg/lock-frontend ; sudo rm /var/cache/apt/archives/lock ;
 
 export vermelho="\e[1;31m"
 export verde="\e[1;32m"
-export corlogo="\033[1;31m"
+export corlogo="\033[1;34m"
 
 echo -e $corlogo "+-----------------------------------+"
 echo -e $corlogo "  _   _ _                 _          "
