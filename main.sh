@@ -38,6 +38,20 @@ echo "*-* INSTALL TERRAFORM 0.13.5 *-*"
 #terraform --version
 #rm -rf terraform_0.13.5_linux_amd64.zip
 echo
+echo "*-* INSTALL DOCKER-ce *-*"
+# adiciona pacotes necessarios
+#sudo apt install -y apt-transport-https ca-certificates software-properties-common
+# adiciona a chave GPG para o repos do docker
+#curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+# adiciona o repos
+#sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+#sudo apt update
+# garantir que esta sendo instalado a partir do docker
+#apt-cache policy docker-ce
+# install docker
+#sudo apt install -y docker-ce
+#docker -v
+echo
 echo `Escolha uma plataforma de comunicação de video`
 echo "[ 1 ] TEAMS"
 echo "[ 2 ] ZOOM"
