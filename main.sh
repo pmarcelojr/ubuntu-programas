@@ -116,3 +116,7 @@ sudo apt list --upgradable
 echo
 echo -e "${verde}*-* Instalando Atualizações do Sistema... *-*"
 sudo apt upgrade -y
+
+echo -e $corlogo "+-----------------------------------+"
+echo -e $corlogo "            ... FIM ...              "
+echo -e $corlogo "+-----------------------------------+"
