@@ -14,7 +14,7 @@ fi
 
 TER_VER=`curl -s https://api.github.com/repos/hashicorp/terraform/releases/latest | grep tag_name | cut -d: -f2 | tr -d \"\,\v | awk '{$1=$1};1'`
 
-apt_pacotes=(git curl unzip pyhton3-pip apt-transport-https ca-certificates software-properties-common golang snapd gnome-sushi telegram-desktop zsh awscli)
+apt_pacotes=(git curl unzip pyhton3-pip apt-transport-https ca-certificates software-properties-common golang snapd gnome-sushi telegram-desktop zsh awscli vim traceroute)
 
 repositorios=(
     "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
@@ -31,9 +31,9 @@ downloads={
 snaps=(spotify)
 snaps_classic=(code kubectl)
 
-## A partir daqui o script irá trabalhar com as configurações ##
+## ----- A partir daqui o script irá trabalhar com as configurações ------ ##
 
-echo "*-* CONFIG MOSTRA % BATERIA *-*"
+# CONFIG MOSTRA % BATERIA 
 gsettings set org.gnome.desktop.interface show-battery-percentage true
 
 # entra na pasta de diretorios e arquivos temporarios
@@ -45,11 +45,15 @@ wget -nv -c ${downloads[@]}
 dpkg --add-architecture i386
 sudo apt update
 
-echo "*-* INSTALL TERRAFORM 0.13.5 *-*"
+sudo apt install ./*.deb
+
+echo "*-* INSTALL TERRAFORM ${TER_VER} *-*"
 unzip terraform_${TER_VER}_linux_amd64.zip
 sudo mv terraform /usr/local/bin/
 terraform --version
-rm -rf terraform_0.13.5_linux_amd64.zip
+rm -rf terraform_${TER_VER}_linux_amd64.zip
+rm -rf ./*.deb
+cd ~
 
 sudo apt install ${pacotes_apt[@]} -y
 
@@ -67,32 +71,13 @@ apt-cache policy docker-ce
 sudo apt install -y docker-ce
 #docker -v
 
-sudo snap install ${snaps[@]}
-sudo snap install --classic ${snaps_classic[@]}
-
-sudo apt install ./*.deb
-
-sudo apt update
-echo
-echo "*-* Mostrando as Atualizações do Sistema... *-*"
-#sudo apt list --upgradable
-echo
-echo "*-* Instalando Atualizações do Sistema... *-*"
-#sudo apt upgrade -y
-
-echo
-echo "*-* INSTALL GOLANG *-*"
-#go version
 # adicione no arquivo ~/.profile
-#export GOPATH=$HOME/go
-#export PATH=$PATH:$GOPATH/bin
-#export PATH=$PATH:GOPATH/bin:/usr/local/go/bin
-#. ~/.profile
-echo
-echo "*-* INSTALL AWS CLI *-*" 
-#aws --version
-# adicione no arquivo ~/.profile
-#export PATH=~/.local/bin:$PATH
+echo export GOPATH=$HOME/go >> ~/.profile
+echo export PATH=$PATH:$GOPATH/bin >> ~/.profile
+echo export PATH=$PATH:GOPATH/bin:/usr/local/go/bin >> ~/.profile
+echo export PATH=~/.local/bin:$PATH >> ~/.profile
+. ~/.profile
+
 echo
 echo "*-* Instalando Shel Zsh e Oh-my-zsh *-*"
 #zsh --version
@@ -104,3 +89,14 @@ echo "Altere o tema padrao para o gallois"
 #nano ~/.zshrc
 echo "Altere o arquivo /bin/bash por /bin/zsh"
 #sudo nano /etc/passwd
+
+sudo snap install ${snaps[@]}
+sudo snap install --classic ${snaps_classic[@]}
+
+sudo apt update
+echo
+echo "*-* Mostrando as Atualizações do Sistema... *-*"
+sudo apt list --upgradable
+echo
+echo "*-* Instalando Atualizações do Sistema... *-*"
+sudo apt upgrade -y
