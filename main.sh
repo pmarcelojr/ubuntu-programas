@@ -16,7 +16,7 @@ echo -e $corlogo " | | | | '_ \| | | | '_ \| __| | | | "
 echo -e $corlogo " | |_| | |_) | |_| | | | | |_| |_| | "
 echo -e $corlogo "  \___/|_.__/ \__,_|_| |_|\__|\__,_| "
 echo -e $corlogo "                      PÓS INSTALAÇÃO "
-echo -e $corlogo "                     MARCELO SANTOS  "
+echo -e $corlogo "                      MARCELO SANTOS "
 echo -e $corlogo "   marcelosantostecnologia@gmail.com "
 echo -e $corlogo "+-----------------------------------+"
 sleep 2
