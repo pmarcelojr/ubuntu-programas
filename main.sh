@@ -71,6 +71,9 @@ echo "*-* INSTALL AWS CLI *-*"
 # adicione no arquivo ~/.profile
 #export PATH=~/.local/bin:$PATH
 echo
+echo "*-* INSTALL TELEGRAM-DESKTOP *-*"
+#sudo apt install telegram-desktop -y
+echo
 echo `Escolha uma plataforma de comunicação de video`
 echo "[ 1 ] TEAMS"
 echo "[ 2 ] ZOOM"
