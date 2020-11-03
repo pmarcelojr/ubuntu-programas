@@ -3,7 +3,7 @@
 ## Saia ao Primeiro Erro
 set -e
 ## Removendo eventuais travas do apt ##
-sudo rm /var/lib/dpkg/lock-frontend ; sudo rm /var/cache/apt/archives/lock ;
+#sudo rm /var/lib/dpkg/lock-frontend ; sudo rm /var/cache/apt/archives/lock ;
 
 export vermelho="\e[1;31m"
 export verde="\e[1;32m"
@@ -21,7 +21,7 @@ echo -e $corlogo "   marcelosantostecnologia@gmail.com "
 echo -e $corlogo "+-----------------------------------+"
 sleep 2
 
-echo "*-* Verificando o Sistema por Atualizações... *-*"
+echo -e ${verde} "*-* Verificando o Sistema por Atualizações... *-*"
 if ! sudo apt update
 then
     echo -e "${vermelho}Não foi possivel atualizar os repositórios. Verifique seu arquivo /etc/apt/sources.list"
@@ -36,13 +36,12 @@ repositorios=(
     "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 )
 
-downloads={
+downloads=(
     "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
     "https://releases.hashicorp.com/terraform/${TER_VER}/terraform_${TER_VER}_linux_amd64.zip"
-    "https://teams.microsoft.com/downloads/desktopurl?env=production&plat=linux&arch=x64&download=true&linuxArchiveType=deb"
+    "https://teams.microsoft.com/downloads/desktopurl?env=production&plat=linux&arch=x64&download=true&linuxArchiveType=deb -O teams.deb"
     "https://zoom.us/client/latest/zoom_amd64.deb -O zoom.deb"
-
-}
+)
 
 snaps=(spotify)
 snaps_classic=(code kubectl)
@@ -54,11 +53,12 @@ gsettings set org.gnome.desktop.interface show-battery-percentage true
 
 # entra na pasta de diretorios e arquivos temporarios
 cd $(mktemp -d)
+pwd
 # baixa arquivos necessarios
-wget -nv -c ${downloads[@]}
+wget -c ${downloads[@]}
 #apt-key add ${chaves[@]}
 # Adiciona suporte a 32 bits && Atualiza repos
-dpkg --add-architecture i386
+sudo dpkg --add-architecture i386
 sudo apt update
 
 sudo apt install ./*.deb
