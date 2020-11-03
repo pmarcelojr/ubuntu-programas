@@ -73,6 +73,8 @@ echo "*-* INSTALL AWS CLI *-*"
 echo
 echo "*-* INSTALL TELEGRAM-DESKTOP *-*"
 #sudo apt install telegram-desktop -y
+echo "*-* INSTALL GNOME-SUSHI *-*"
+#sudo apt install gnome-sushi -y
 echo
 echo `Escolha uma plataforma de comunicação de video`
 echo "[ 1 ] TEAMS"
