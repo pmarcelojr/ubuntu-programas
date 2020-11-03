@@ -52,6 +52,10 @@ echo "*-* INSTALL DOCKER-ce *-*"
 #sudo apt install -y docker-ce
 #docker -v
 echo
+echo "*-* INSTALL KUBECTL *-*"
+#sudo snap install kubectl --classic
+#kubectl version --client
+echo
 echo `Escolha uma plataforma de comunicação de video`
 echo "[ 1 ] TEAMS"
 echo "[ 2 ] ZOOM"
