@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 echo "*-* Verificando o Sistema por Atualizações... *-*"
 #if ! sudo apt update
