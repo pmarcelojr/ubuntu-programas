@@ -7,7 +7,19 @@ sudo rm /var/lib/dpkg/lock-frontend ; sudo rm /var/cache/apt/archives/lock ;
 
 export vermelho="\e[1;31m"
 export verde="\e[1;32m"
-export fecha="\e[m"
+export corlogo="\033[1;31m"
+
+echo -e $corlogo "+-----------------------------------+"
+echo -e $corlogo "  _   _ _                 _          "
+echo -e $corlogo " | | | | |__  _   _ _ __ | |_ _   _  "
+echo -e $corlogo " | | | | '_ \| | | | '_ \| __| | | | "
+echo -e $corlogo " | |_| | |_) | |_| | | | | |_| |_| | "
+echo -e $corlogo "  \___/|_.__/ \__,_|_| |_|\__|\__,_| "
+echo -e $corlogo "                      PÓS INSTALAÇÃO "
+echo -e $corlogo "                     MARCELO SANTOS  "
+echo -e $corlogo "   marcelosantostecnologia@gmail.com "
+echo -e $corlogo "+-----------------------------------+"
+sleep 2
 
 echo "*-* Verificando o Sistema por Atualizações... *-*"
 if ! sudo apt update
