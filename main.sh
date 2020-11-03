@@ -3,6 +3,8 @@
 ## Saia ao Primeiro Erro
 set -e
 
+## Removendo eventuais travas do apt ##
+#sudo rm /var/lib/dpkg/lock-frontend ; sudo rm /var/cache/apt/archives/lock ;
 echo "*-* Verificando o Sistema por Atualizações... *-*"
 #if ! sudo apt update
 #then
