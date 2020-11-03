@@ -56,6 +56,15 @@ echo "*-* INSTALL KUBECTL *-*"
 #sudo snap install kubectl --classic
 #kubectl version --client
 echo
+echo "*-* INSTALL GOLANG *-*"
+#sudo apt install golang -y
+#go version
+# adicione no arquivo ~/.profile
+#export GOPATH=$HOME/go
+#export PATH=$PATH:$GOPATH/bin
+#export PATH=$PATH:GOPATH/bin:/usr/local/go/bin
+#. ~/.profile
+echo
 echo `Escolha uma plataforma de comunicação de video`
 echo "[ 1 ] TEAMS"
 echo "[ 2 ] ZOOM"
