@@ -16,8 +16,8 @@ echo
 echo "*-* Limpando o Sistema *-*"
 #sudo apt clean
 echo
-echo "*-* INSTALL GIT e Curl *-*"
-#sudo apt install git && curl -y
+echo "*-* INSTALL GIT e Curl e Unzip *-*"
+#sudo apt install git && curl -y && unzip
 echo
 echo "*-* CONFIG MOSTRA % BATERIA *-*"
 #gsettings set org.gnome.desktop.interface show-battery-percentage true
@@ -29,6 +29,14 @@ echo "*-* INSTALL CHROME *-*"
 echo
 echo "*-* INSTALL VISUAL STUDIO CODE *-*"
 #sudo snap install --classic code
+echo
+echo "*-* INSTALL TERRAFORM 0.13.5 *-*"
+#TER_VER=`curl -s https://api.github.com/repos/hashicorp/terraform/releases/latest | grep tag_name | cut -d: -f2 | tr -d \"\,\v | awk '{$1=$1};1'`
+#wget https://releases.hashicorp.com/terraform/${TER_VER}/terraform_${TER_VER}_linux_amd64.zip
+#unzip terraform_${TER_VER}_linux_amd64.zip
+#sudo mv terraform /usr/local/bin/
+#terraform --version
+#rm -rf terraform_0.13.5_linux_amd64.zip
 echo
 echo `Escolha uma plataforma de comunicação de video`
 echo "[ 1 ] TEAMS"
