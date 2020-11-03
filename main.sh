@@ -51,9 +51,6 @@ snaps_classic=(code kubectl)
 # CONFIG MOSTRA % BATERIA 
 gsettings set org.gnome.desktop.interface show-battery-percentage true
 
-# entra na pasta de diretorios e arquivos temporarios
-cd $(mktemp -d)
-pwd
 # baixa arquivos necessarios
 wget -c ${downloads[@]}
 #apt-key add ${chaves[@]}
