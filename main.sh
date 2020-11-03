@@ -17,7 +17,7 @@ echo "*-* Limpando o Sistema *-*"
 #sudo apt clean
 echo
 echo "*-* INSTALL GIT e Curl e Unzip *-*"
-#sudo apt install git && curl -y && unzip
+#sudo apt install -y git && curl && unzip && pyhton3-pip
 echo
 echo "*-* CONFIG MOSTRA % BATERIA *-*"
 #gsettings set org.gnome.desktop.interface show-battery-percentage true
@@ -64,6 +64,12 @@ echo "*-* INSTALL GOLANG *-*"
 #export PATH=$PATH:$GOPATH/bin
 #export PATH=$PATH:GOPATH/bin:/usr/local/go/bin
 #. ~/.profile
+echo
+echo "*-* INSTALL AWS CLI *-*"
+#sudo pip3 install -y awscli
+#aws --version
+# adicione no arquivo ~/.profile
+#export PATH=~/.local/bin:$PATH
 echo
 echo `Escolha uma plataforma de comunicação de video`
 echo "[ 1 ] TEAMS"
