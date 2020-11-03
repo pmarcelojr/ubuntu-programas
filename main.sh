@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+## Saia ao Primeiro Erro
+set -e
+
 echo "*-* Verificando o Sistema por Atualizações... *-*"
 #if ! sudo apt update
 #then
