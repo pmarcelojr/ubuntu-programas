@@ -2,13 +2,17 @@
 
 ## Saia ao Primeiro Erro
 set -e
-
 ## Removendo eventuais travas do apt ##
 sudo rm /var/lib/dpkg/lock-frontend ; sudo rm /var/cache/apt/archives/lock ;
+
+export vermelho="\e[1;31m"
+export verde="\e[1;32m"
+export fecha="\e[m"
+
 echo "*-* Verificando o Sistema por Atualizações... *-*"
 if ! sudo apt update
 then
-    echo "Não foi possivel atualizar os repositórios. Verifique seu arquivo /etc/apt/sources.list"
+    echo -e "${vermelho}Não foi possivel atualizar os repositórios. Verifique seu arquivo /etc/apt/sources.list"
     exit 1
 fi
 
@@ -47,7 +51,7 @@ sudo apt update
 
 sudo apt install ./*.deb
 
-echo "*-* INSTALL TERRAFORM ${TER_VER} *-*"
+echo -e "${verde}*-* INSTALL TERRAFORM ${TER_VER} *-*"
 unzip terraform_${TER_VER}_linux_amd64.zip
 sudo mv terraform /usr/local/bin/
 terraform --version
@@ -57,7 +61,7 @@ cd ~
 
 sudo apt install ${pacotes_apt[@]} -y
 
-echo "*-* INSTALL DOCKER-ce *-*"
+echo -e "${verde}*-* INSTALL DOCKER-ce *-*"
 # Adiciona a chave GPG para o repos do docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 # Adiciona o Repositorio
@@ -95,8 +99,8 @@ sudo snap install --classic ${snaps_classic[@]}
 
 sudo apt update
 echo
-echo "*-* Mostrando as Atualizações do Sistema... *-*"
+echo -e "${verde}*-* Mostrando as Atualizações do Sistema... *-*"
 sudo apt list --upgradable
 echo
-echo "*-* Instalando Atualizações do Sistema... *-*"
+echo -e "${verde}*-* Instalando Atualizações do Sistema... *-*"
 sudo apt upgrade -y
