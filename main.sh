@@ -45,13 +45,6 @@ atualizar(){
     sudo apt upgrade -y
 }
 
-echo -e ${verde} "*-- Verificando o Sistema por Atualizações... --*"
-if ! apt update
-then
-    echo -e "${vermelho}Não foi possivel atualizar os repositórios. Verifique seu arquivo /etc/apt/sources.list"
-    exit 1
-fi
-
 TER_VER=`curl -s https://api.github.com/repos/hashicorp/terraform/releases/latest | grep tag_name | cut -d: -f2 | tr -d \"\,\v | awk '{$1=$1};1'`
 
 apt_pacotes=(curl unzip pyhton3-pip apt-transport-https ca-certificates software-properties-common golang snapd gnome-sushi telegram-desktop zsh awscli vim traceroute)
