@@ -9,7 +9,7 @@ export vermelho="\e[1;31m"
 export verde="\e[1;32m"
 export corlogo="\033[1;34m"
 
-DIR_DOWNLOADS="$HOME/Downloads"
+DIR_DOWNLOADS="$HOME/Downloads/programas"
 
 TER_VER=`curl -s https://api.github.com/repos/hashicorp/terraform/releases/latest | grep tag_name | cut -d: -f2 | tr -d \"\,\v | awk '{$1=$1};1'`
 
@@ -20,8 +20,8 @@ repositorios=(
 )
 
 URL_CHROME="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
-URL_TEAMS="https://teams.microsoft.com/downloads/desktopurl?env=production&plat=linux&arch=x64&download=true&linuxArchiveType=deb -O teams.deb"
-URL_ZOOM="https://zoom.us/client/latest/zoom_amd64.deb -O zoom.deb"
+URL_TEAMS="https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams/teams_1.3.00.25560_amd64.deb"
+URL_ZOOM="https://zoom.us/client/latest/zoom_amd64.deb"
 URL_TERRAFORM="https://releases.hashicorp.com/terraform/${TER_VER}/terraform_${TER_VER}_linux_amd64.zip"
 
 snaps=(spotify)
@@ -80,6 +80,20 @@ do
         echo -e $verde "[INSTALADO] - $nome_app"
     fi
 done
+
+#atualizar
+
+### Downloads programas .deb ###
+mkdir $DIR_DOWNLOADS
+wget -c $URL_CHROME -P $DIR_DOWNLOADS
+wget -c $URL_TEAMS -P $DIR_DOWNLOADS
+wget -c $URL_ZOOM -P $DIR_DOWNLOADS
+
+### Instalação programas baixados ###
+sudo apt install $DIR_DOWNLOADS/*.deb
+
+### Limpando pastas temporaria ###
+sudo rm $DIR_DOWNLOADS/*.* -f
 
 echo -e $corlogo "+-----------------------------------+"
 echo -e $corlogo "            ... FIM ...              "
