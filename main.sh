@@ -69,9 +69,18 @@ atualizar(){
 # CONFIG MOSTRA % BATERIA 
 gsettings set org.gnome.desktop.interface show-battery-percentage true
 
+for nome_app in ${apt_pacotes[@]};
+do
+    if ! dpkg -l | grep -q $nome_app;
+    then
+        sudo apt install -y "$nome_app"
+        check_sucessful
+    else
+        echo "[INSTALADO] - $nome_app"
+    fi
+done
+
 #apt-key add ${chaves[@]}
-# Adiciona suporte a 32 bits && Atualiza repos
-sudo dpkg --add-architecture i386
 sudo apt update
 
 echo -e "${verde}*-* INSTALL TERRAFORM ${TER_VER} *-*"
