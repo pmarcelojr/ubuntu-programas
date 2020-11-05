@@ -9,6 +9,24 @@ export vermelho="\e[1;31m"
 export verde="\e[1;32m"
 export corlogo="\033[1;34m"
 
+DIR_DOWNLOADS="$HOME/Downloads"
+
+TER_VER=`curl -s https://api.github.com/repos/hashicorp/terraform/releases/latest | grep tag_name | cut -d: -f2 | tr -d \"\,\v | awk '{$1=$1};1'`
+
+apt_pacotes=(curl unzip pyhton3-pip apt-transport-https ca-certificates software-properties-common golang snapd gnome-sushi telegram-desktop zsh awscli vim traceroute)
+
+repositorios=(
+    "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+)
+
+URL_CHROME="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
+URL_TEAMS="https://teams.microsoft.com/downloads/desktopurl?env=production&plat=linux&arch=x64&download=true&linuxArchiveType=deb -O teams.deb"
+URL_ZOOM="https://zoom.us/client/latest/zoom_amd64.deb -O zoom.deb"
+URL_TERRAFORM="https://releases.hashicorp.com/terraform/${TER_VER}/terraform_${TER_VER}_linux_amd64.zip"
+
+snaps=(spotify)
+snaps_classic=(code kubectl)
+
 check_sucessful() {
   if [ $? != 0 ];
   then
@@ -45,37 +63,16 @@ atualizar(){
     sudo apt upgrade -y
 }
 
-TER_VER=`curl -s https://api.github.com/repos/hashicorp/terraform/releases/latest | grep tag_name | cut -d: -f2 | tr -d \"\,\v | awk '{$1=$1};1'`
-
-apt_pacotes=(curl unzip pyhton3-pip apt-transport-https ca-certificates software-properties-common golang snapd gnome-sushi telegram-desktop zsh awscli vim traceroute)
-
-repositorios=(
-    "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-)
-
-downloads=(
-    "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
-    "https://releases.hashicorp.com/terraform/${TER_VER}/terraform_${TER_VER}_linux_amd64.zip"
-    "https://teams.microsoft.com/downloads/desktopurl?env=production&plat=linux&arch=x64&download=true&linuxArchiveType=deb -O teams.deb"
-    "https://zoom.us/client/latest/zoom_amd64.deb -O zoom.deb"
-)
-
-snaps=(spotify)
-snaps_classic=(code kubectl)
 
 ## ----- A partir daqui o script irá trabalhar com as configurações ------ ##
 
 # CONFIG MOSTRA % BATERIA 
 gsettings set org.gnome.desktop.interface show-battery-percentage true
 
-# baixa arquivos necessarios
-wget -c ${downloads[@]}
 #apt-key add ${chaves[@]}
 # Adiciona suporte a 32 bits && Atualiza repos
 sudo dpkg --add-architecture i386
 sudo apt update
-
-sudo apt install ./*.deb
 
 echo -e "${verde}*-* INSTALL TERRAFORM ${TER_VER} *-*"
 unzip terraform_${TER_VER}_linux_amd64.zip
