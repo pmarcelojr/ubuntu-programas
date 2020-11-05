@@ -13,7 +13,7 @@ DIR_DOWNLOADS="$HOME/Downloads"
 
 TER_VER=`curl -s https://api.github.com/repos/hashicorp/terraform/releases/latest | grep tag_name | cut -d: -f2 | tr -d \"\,\v | awk '{$1=$1};1'`
 
-apt_pacotes=(curl unzip pyhton3-pip apt-transport-https ca-certificates software-properties-common golang snapd gnome-sushi telegram-desktop zsh awscli vim traceroute)
+apt_pacotes=(curl unzip apt-transport-https ca-certificates software-properties-common golang snapd gnome-sushi telegram-desktop zsh awscli vim traceroute)
 
 repositorios=(
     "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
@@ -69,6 +69,7 @@ atualizar(){
 # CONFIG MOSTRA % BATERIA 
 gsettings set org.gnome.desktop.interface show-battery-percentage true
 
+# Instalação de Programas
 for nome_app in ${apt_pacotes[@]};
 do
     if ! dpkg -l | grep -q $nome_app;
@@ -76,60 +77,9 @@ do
         sudo apt install -y "$nome_app"
         check_sucessful
     else
-        echo "[INSTALADO] - $nome_app"
+        echo -e $verde "[INSTALADO] - $nome_app"
     fi
 done
-
-#apt-key add ${chaves[@]}
-sudo apt update
-
-echo -e "${verde}*-* INSTALL TERRAFORM ${TER_VER} *-*"
-unzip terraform_${TER_VER}_linux_amd64.zip
-sudo mv terraform /usr/local/bin/
-terraform --version
-rm -rf terraform_${TER_VER}_linux_amd64.zip
-rm -rf ./*.deb
-cd ~
-
-sudo apt install ${pacotes_apt[@]} -y
-
-echo -e "${verde}*-* INSTALL DOCKER-ce *-*"
-# Adiciona a chave GPG para o repos do docker
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-# Adiciona o Repositorio
-for repositorios in ${repositorios[@]};; do
-    apt-add-repository "$repositorio" -y
-done
-sudo apt update
-# garantir que esta sendo instalado a partir do docker
-apt-cache policy docker-ce
-# install docker
-sudo apt install -y docker-ce
-#docker -v
-
-# adicione no arquivo ~/.profile
-echo export GOPATH=$HOME/go >> ~/.profile
-echo export PATH=$PATH:$GOPATH/bin >> ~/.profile
-echo export PATH=$PATH:GOPATH/bin:/usr/local/go/bin >> ~/.profile
-echo export PATH=~/.local/bin:$PATH >> ~/.profile
-. ~/.profile
-
-echo
-echo "*-* Instalando Shel Zsh e Oh-my-zsh *-*"
-#zsh --version
-#sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-echo "Realizando backup do arquivo de configuração original"
-#cp ~/.zshrc ~/.zshrc.orig
-echo "Altere o tema padrao para o gallois"
-# Plugins = git / colored-man-pages / golang / terraform
-#nano ~/.zshrc
-echo "Altere o arquivo /bin/bash por /bin/zsh"
-#sudo nano /etc/passwd
-
-sudo snap install ${snaps[@]}
-sudo snap install --classic ${snaps_classic[@]}
-
-atualizar
 
 echo -e $corlogo "+-----------------------------------+"
 echo -e $corlogo "            ... FIM ...              "
