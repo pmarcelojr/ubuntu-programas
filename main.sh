@@ -66,9 +66,6 @@ atualizar(){
 
 ## ----- A partir daqui o script irá trabalhar com as configurações ------ ##
 
-# CONFIG MOSTRA % BATERIA 
-gsettings set org.gnome.desktop.interface show-battery-percentage true
-
 # Instalação de Programas
 for nome_app in ${apt_pacotes[@]};
 do
@@ -94,6 +91,10 @@ sudo apt install $DIR_DOWNLOADS/*.deb
 
 ### Limpando pastas temporaria ###
 sudo rm $DIR_DOWNLOADS/*.* -f
+
+### Procedimentos e Otimizações ### 
+gsettings set org.gnome.desktop.interface show-battery-percentage true
+gsettings set org.gnome.Terminal.Legacy.Settings confirm-close false
 
 echo -e $corlogo "+-----------------------------------+"
 echo -e $corlogo "            ... FIM ...              "
