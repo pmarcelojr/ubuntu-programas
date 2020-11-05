@@ -9,6 +9,14 @@ export vermelho="\e[1;31m"
 export verde="\e[1;32m"
 export corlogo="\033[1;34m"
 
+check_sucessful() {
+  if [ $? != 0 ];
+  then
+    echo "Error Execution"
+    exit 1
+  fi
+}
+
 echo -e $corlogo "+-----------------------------------+"
 echo -e $corlogo "  _   _ _                 _          "
 echo -e $corlogo " | | | | |__  _   _ _ __ | |_ _   _  "
@@ -21,8 +29,24 @@ echo -e $corlogo "   marcelosantostecnologia@gmail.com "
 echo -e $corlogo "+-----------------------------------+"
 sleep 2
 
-echo -e ${verde} "*-* Verificando o Sistema por Atualizações... *-*"
-if ! sudo apt update
+# if [ "$USER" = "root" ]
+# then
+#     echo ""
+# else
+#     echo -e ${vermelho} "Você precisa ser o ROOT. Abortar."
+#     exit 1
+# fi
+
+atualizar(){
+    apt update
+    echo -e "${verde}*-- Mostrando as Atualizações do Sistema... --*"
+    sudo apt list --upgradable
+    echo -e "${verde}*-- Instalando Atualizações do Sistema... --*"
+    sudo apt upgrade -y
+}
+
+echo -e ${verde} "*-- Verificando o Sistema por Atualizações... --*"
+if ! apt update
 then
     echo -e "${vermelho}Não foi possivel atualizar os repositórios. Verifique seu arquivo /etc/apt/sources.list"
     exit 1
@@ -30,7 +54,7 @@ fi
 
 TER_VER=`curl -s https://api.github.com/repos/hashicorp/terraform/releases/latest | grep tag_name | cut -d: -f2 | tr -d \"\,\v | awk '{$1=$1};1'`
 
-apt_pacotes=(git curl unzip pyhton3-pip apt-transport-https ca-certificates software-properties-common golang snapd gnome-sushi telegram-desktop zsh awscli vim traceroute)
+apt_pacotes=(curl unzip pyhton3-pip apt-transport-https ca-certificates software-properties-common golang snapd gnome-sushi telegram-desktop zsh awscli vim traceroute)
 
 repositorios=(
     "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
@@ -106,13 +130,7 @@ echo "Altere o arquivo /bin/bash por /bin/zsh"
 sudo snap install ${snaps[@]}
 sudo snap install --classic ${snaps_classic[@]}
 
-sudo apt update
-echo
-echo -e "${verde}*-* Mostrando as Atualizações do Sistema... *-*"
-sudo apt list --upgradable
-echo
-echo -e "${verde}*-* Instalando Atualizações do Sistema... *-*"
-sudo apt upgrade -y
+atualizar
 
 echo -e $corlogo "+-----------------------------------+"
 echo -e $corlogo "            ... FIM ...              "
