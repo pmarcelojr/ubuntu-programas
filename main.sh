@@ -21,7 +21,7 @@ URL_DEVDOCS="https://github.com/egoist/devdocs-app/releases/download/v0.7.1/DevD
 
 ### Arquivos zip ###
 TER_VER=`curl -s https://api.github.com/repos/hashicorp/terraform/releases/latest | grep tag_name | cut -d: -f2 | tr -d \"\,\v | awk '{$1=$1};1'`
-URL_TERRAFORM="https://releases.hashicorp.com/terraform/${TER_VER}/terraform_${TER_VER}_linux_amd64.zip"
+URL_TERRAFORM="https://releases.hashicorp.com/terraform/0.13.5/terraform_0.13.5_linux_amd64.zip"
 
 snaps=(spotify postman)
 snaps_classic=(code kubectl)
@@ -124,9 +124,9 @@ sudo apt install $DIR_DOWNLOADS/*.deb
 sudo rm $DIR_DOWNLOADS/*.* -f
 
 ### Instalando Terraform ###
-echo -e $verde "INSTALL TERRAFORM $TER_VER"
+echo -e $verde "INSTALL TERRAFORM"
 wget -c $URL_TERRAFORM
-unzip terraform_${TER_VER}_linux_amd64.zip
+unzip terraform_0.13.5_linux_amd64.zip
 sudo mv terraform /usr/local/bin
 terraform --version
 rm -rf terraform_${TER_VER}_linux_amd64.zip
