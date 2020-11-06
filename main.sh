@@ -26,7 +26,7 @@ URL_DEVDOCS="https://github.com/egoist/devdocs-app/releases/download/v0.7.1/DevD
 TER_VER=`curl -s https://api.github.com/repos/hashicorp/terraform/releases/latest | grep tag_name | cut -d: -f2 | tr -d \"\,\v | awk '{$1=$1};1'`
 URL_TERRAFORM="https://releases.hashicorp.com/terraform/${TER_VER}/terraform_${TER_VER}_linux_amd64.zip"
 
-snaps=(spotify insomnia)
+snaps=(spotify postman)
 snaps_classic=(code kubectl)
 
 check_sucessful() {
