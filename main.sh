@@ -70,7 +70,7 @@ for nome_app in ${apt_pacotes[@]};
 do
     if ! dpkg -l | grep -q $nome_app;
     then
-        sudo apt install -y "$nome_app"
+        sudo apt install -y $nome_app
         check_sucessful
     else
         echo -e $verde "[INSTALADO] - $nome_app"
