@@ -3,7 +3,7 @@
 ## Saia ao Primeiro Erro
 set -e
 ## Removendo eventuais travas do apt ##
-#sudo rm /var/lib/dpkg/lock-frontend ; sudo rm /var/cache/apt/archives/lock ;
+sudo rm /var/lib/dpkg/lock-frontend ; sudo rm /var/cache/apt/archives/lock ;
 
 export vermelho="\e[1;31m"
 export verde="\e[1;32m"
@@ -55,7 +55,7 @@ sleep 2
 # fi
 
 atualizar(){
-    apt update
+    sudo apt update
     echo -e "${verde}*-- Mostrando as Atualizações do Sistema... --*"
     sudo apt list --upgradable
     echo -e "${verde}*-- Instalando Atualizações do Sistema... --*"
