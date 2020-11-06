@@ -139,8 +139,15 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - # A
 sudo apt-add-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" # Adiciona repositorio
 atualizar # Atualiza Sistema
 apt-cache policy docker-ce # Garantir que esta instalando a partir do docker
-sudo apt install -y docker-ce 
-docker -v
+sudo apt install -y docker-ce
+if ( systemctl -q is-active docker.service );
+then
+    docker -v
+    echo "Apllication Docker is still running"
+    check_sucessful
+else
+    sudo systemctl start docker.service
+fi
 
 ### Procedimentos e Otimizações ### 
 gsettings set org.gnome.desktop.interface show-battery-percentage true
