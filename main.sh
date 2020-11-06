@@ -108,7 +108,7 @@ echo export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin >> ~/.profile
 echo export PATH=~/.local/bin:$PATH >> ~/.profile
 . ~/.profile
 
-#atualizar
+atualizar
 
 ### Downloads programas .deb ###
 mkdir $DIR_DOWNLOADS
