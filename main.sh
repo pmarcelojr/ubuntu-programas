@@ -68,7 +68,7 @@ atualizar(){
 ### Instalação de Programas ###
 for nome_app in ${apt_pacotes[@]};
 do
-    if ! dpkg -l | grep -q $nome_app;
+    if ! dpkg --get-selections | grep -q "\<$nome_app";
     then
         sudo apt install -y $nome_app
         check_sucessful
