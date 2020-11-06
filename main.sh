@@ -124,14 +124,12 @@ sudo apt install $DIR_DOWNLOADS/*.deb
 sudo rm $DIR_DOWNLOADS/*.* -f
 
 ### Instalando Terraform ###
-cd $DIR_DOWNLOADS
 echo -e $verde "INSTALL TERRAFORM $TER_VER"
 wget -c $URL_TERRAFORM
 unzip terraform_${TER_VER}_linux_amd64.zip
 sudo mv terraform /usr/local/bin
 terraform --version
 rm -rf terraform_${TER_VER}_linux_amd64.zip
-cd ~
 
 ### Instalando Docker ###
 echo -e ${verde} "INSTALL DOCKER"
