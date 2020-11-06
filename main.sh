@@ -80,16 +80,28 @@ do
 done
 
 ### Instalação de Programas com Snap ###
- for nome_snap in ${snaps[@]};
- do
-     if ! snap list | grep -q $nome_snap;
-     then
+for nome_snap in ${snaps[@]};
+do
+    if ! snap list | grep -q $nome_snap;
+    then
         sudo snap install $nome_snap
         check_sucessful
     else
-         echo -e $verde "[INSTALADO] - $nome_snap"
-     fi
- done
+        echo -e $verde "[INSTALADO] - $nome_snap"
+    fi
+done
+
+### Instalação de Programas com Snap --classic ###
+for nome_app in ${snaps_classic[@]};
+do
+    if ! snap list | grep -q $nome_app;
+    then
+        sudo snap install --classic $nome_app
+        check_sucessful
+    else
+        echo -e $verde "[INSTALADO] - $nome_snap"
+    fi
+done
 
 ### Atualizando arquivo ~/.profile com variaveis GOLANG ###
 echo export GOPATH=$HOME/go >> ~/.profile
