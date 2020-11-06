@@ -152,6 +152,7 @@ gsettings set org.gnome.desktop.interface show-battery-percentage true
 gsettings set org.gnome.Terminal.Legacy.Settings confirm-close false
 
 ### Finalização e Limpeza ###
+atualizar
 sudo apt -y autoremove
 sudo apt -y autoclean
 
