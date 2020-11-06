@@ -109,6 +109,10 @@ cd ~
 gsettings set org.gnome.desktop.interface show-battery-percentage true
 gsettings set org.gnome.Terminal.Legacy.Settings confirm-close false
 
+### Finalização e Limpeza ###
+sudo apt -y autoremove
+sudo apt -y autoclean
+
 echo -e $corlogo "+-----------------------------------+"
 echo -e $corlogo "            ... FIM ...              "
 echo -e $corlogo "+-----------------------------------+"
