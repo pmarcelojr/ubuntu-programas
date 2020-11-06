@@ -25,7 +25,7 @@ URL_ZOOM="https://zoom.us/client/latest/zoom_amd64.deb"
 TER_VER=`curl -s https://api.github.com/repos/hashicorp/terraform/releases/latest | grep tag_name | cut -d: -f2 | tr -d \"\,\v | awk '{$1=$1};1'`
 URL_TERRAFORM="https://releases.hashicorp.com/terraform/${TER_VER}/terraform_${TER_VER}_linux_amd64.zip"
 
-snaps=(spotify)
+snaps=(spotify insomnia)
 snaps_classic=(code kubectl)
 
 check_sucessful() {
@@ -67,7 +67,7 @@ atualizar(){
 
 ## ----- A partir daqui o script irá trabalhar com as configurações ------ ##
 
-# Instalação de Programas
+### Instalação de Programas ###
 for nome_app in ${apt_pacotes[@]};
 do
     if ! dpkg -l | grep -q $nome_app;
@@ -78,6 +78,18 @@ do
         echo -e $verde "[INSTALADO] - $nome_app"
     fi
 done
+
+### Instalação de Programas com Snap ###
+ for nome_snap in ${snaps[@]};
+ do
+     if ! snap list | grep -q $nome_snap;
+     then
+        sudo snap install $nome_snap
+        check_sucessful
+    else
+         echo -e $verde "[INSTALADO] - $nome_snap"
+     fi
+ done
 
 ### Atualizando arquivo ~/.profile com variaveis GOLANG ###
 echo export GOPATH=$HOME/go >> ~/.profile
