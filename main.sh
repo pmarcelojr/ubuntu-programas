@@ -13,9 +13,6 @@ DIR_DOWNLOADS="$HOME/Downloads/programas"
 
 apt_pacotes=(curl unzip apt-transport-https ca-certificates software-properties-common golang snapd gnome-sushi telegram-desktop zsh awscli vim traceroute)
 
-repositorios=(
-    "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-)
 ### Arquivos deb ###
 URL_CHROME="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
 URL_TEAMS="https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams/teams_1.3.00.25560_amd64.deb"
@@ -136,7 +133,14 @@ terraform --version
 rm -rf terraform_${TER_VER}_linux_amd64.zip
 cd ~
 
-
+### Instalando Docker ###
+echo -e ${verde} "INSTALL DOCKER"
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - # Adiciona chave GPG para repos
+sudo apt-add-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" # Adiciona repositorio
+atualizar # Atualiza Sistema
+apt-cache policy docker-ce # Garantir que esta instalando a partir do docker
+sudo apt install -y docker-ce 
+docker -v
 
 ### Procedimentos e Otimizações ### 
 gsettings set org.gnome.desktop.interface show-battery-percentage true
