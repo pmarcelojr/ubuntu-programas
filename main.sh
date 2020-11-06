@@ -79,6 +79,13 @@ do
     fi
 done
 
+### Atualizando arquivo ~/.profile com variaveis GOLANG ###
+echo export GOPATH=$HOME/go >> ~/.profile
+echo export PATH=$PATH:$GOPATH/bin >> ~/.profile
+echo export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin >> ~/.profile
+echo export PATH=~/.local/bin:$PATH >> ~/.profile
+. ~/.profile
+
 #atualizar
 
 ### Downloads programas .deb ###
