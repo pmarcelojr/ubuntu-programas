@@ -54,4 +54,4 @@ chmod +x main.sh
 - terraform
 
 ### Ultima Modificação:
->06 Nov 2020
+>11 Nov 2020
