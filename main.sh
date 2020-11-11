@@ -126,6 +126,11 @@ echo export PATH=~/.local/bin:$PATH >> ~/.profile
 
 atualizar
 
+### Instalando AZ CLI ###
+echo -e $verde "INSTALL AZ CLI"
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+az --version
+
 ### Instalando Terraform ###
 echo -e $verde "INSTALL TERRAFORM"
 wget -c $URL_TERRAFORM
