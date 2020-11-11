@@ -11,7 +11,7 @@ export corlogo="\033[1;34m"
 
 DIR_DOWNLOADS="$HOME/Downloads/programas"
 
-apt_pacotes=(curl unzip apt-transport-https ca-certificates software-properties-common golang snapd gnome-sushi telegram-desktop zsh awscli vim traceroute)
+apt_pacotes=(curl unzip apt-transport-https ca-certificates software-properties-common golang snapd gnome-sushi telegram-desktop zsh awscli vim traceroute dotnet-sdk-3.1)
 
 ### Arquivos deb ###
 URL_CHROME="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
@@ -66,6 +66,20 @@ atualizar(){
 
 ## ----- A partir daqui o script irá trabalhar com as configurações ------ ##
 
+### Downloads programas .deb ###
+mkdir $DIR_DOWNLOADS
+wget -c $URL_CHROME -P $DIR_DOWNLOADS
+wget -c $URL_TEAMS -P $DIR_DOWNLOADS
+wget -c $URL_ZOOM -P $DIR_DOWNLOADS
+wget -c $URL_DEVDOCS -P $DIR_DOWNLOADS
+wget -C $URL_MICROSOFT_PPA -P $DIR_DOWNLOADS
+
+### Instalação programas baixados ###
+sudo apt install $DIR_DOWNLOADS/*.deb
+
+### Limpando pastas temporaria ###
+sudo rm $DIR_DOWNLOADS/*.* -f
+
 ### Instalação de Programas ###
 for nome_app in ${apt_pacotes[@]};
 do
@@ -111,20 +125,6 @@ echo export PATH=~/.local/bin:$PATH >> ~/.profile
 . ~/.profile
 
 atualizar
-
-### Downloads programas .deb ###
-mkdir $DIR_DOWNLOADS
-wget -c $URL_CHROME -P $DIR_DOWNLOADS
-wget -c $URL_TEAMS -P $DIR_DOWNLOADS
-wget -c $URL_ZOOM -P $DIR_DOWNLOADS
-wget -c $URL_DEVDOCS -P $DIR_DOWNLOADS
-wget -C $URL_MICROSOFT_PPA -P $DIR_DOWNLOADS
-
-### Instalação programas baixados ###
-sudo apt install $DIR_DOWNLOADS/*.deb
-
-### Limpando pastas temporaria ###
-sudo rm $DIR_DOWNLOADS/*.* -f
 
 ### Instalando Terraform ###
 echo -e $verde "INSTALL TERRAFORM"
