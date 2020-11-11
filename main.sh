@@ -18,6 +18,7 @@ URL_CHROME="https://dl.google.com/linux/direct/google-chrome-stable_current_amd6
 URL_TEAMS="https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams/teams_1.3.00.25560_amd64.deb"
 URL_ZOOM="https://zoom.us/client/latest/zoom_amd64.deb"
 URL_DEVDOCS="https://github.com/egoist/devdocs-app/releases/download/v0.7.1/DevDocs_0.7.1_amd64.deb"
+URL_MICROSOFT_PPA="https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb"
 
 ### Arquivos zip ###
 TER_VER=`curl -s https://api.github.com/repos/hashicorp/terraform/releases/latest | grep tag_name | cut -d: -f2 | tr -d \"\,\v | awk '{$1=$1};1'`
@@ -117,6 +118,7 @@ wget -c $URL_CHROME -P $DIR_DOWNLOADS
 wget -c $URL_TEAMS -P $DIR_DOWNLOADS
 wget -c $URL_ZOOM -P $DIR_DOWNLOADS
 wget -c $URL_DEVDOCS -P $DIR_DOWNLOADS
+wget -C $URL_MICROSOFT_PPA -P $DIR_DOWNLOADS
 
 ### Instalação programas baixados ###
 sudo apt install $DIR_DOWNLOADS/*.deb
