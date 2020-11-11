@@ -25,7 +25,7 @@ TER_VER=`curl -s https://api.github.com/repos/hashicorp/terraform/releases/lates
 URL_TERRAFORM="https://releases.hashicorp.com/terraform/0.13.5/terraform_0.13.5_linux_amd64.zip"
 
 snaps=(spotify postman)
-snaps_classic=(code kubectl)
+snaps_classic=(code kubectl slack)
 
 check_sucessful() {
   if [ $? != 0 ];
