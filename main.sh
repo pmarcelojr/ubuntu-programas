@@ -75,7 +75,7 @@ wget -c $URL_DEVDOCS -P $DIR_DOWNLOADS
 wget -c $URL_MICROSOFT_PPA -P $DIR_DOWNLOADS
 
 ### Instalação programas baixados ###
-sudo apt install $DIR_DOWNLOADS/*.deb
+sudo apt install -y $DIR_DOWNLOADS/*.deb
 
 ### Limpando pastas temporaria ###
 sudo rm $DIR_DOWNLOADS/*.* -f
