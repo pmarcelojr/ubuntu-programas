@@ -72,7 +72,7 @@ wget -c $URL_CHROME -P $DIR_DOWNLOADS
 wget -c $URL_TEAMS -P $DIR_DOWNLOADS
 wget -c $URL_ZOOM -P $DIR_DOWNLOADS
 wget -c $URL_DEVDOCS -P $DIR_DOWNLOADS
-wget -C $URL_MICROSOFT_PPA -P $DIR_DOWNLOADS
+wget -c $URL_MICROSOFT_PPA -P $DIR_DOWNLOADS
 
 ### Instalação programas baixados ###
 sudo apt install $DIR_DOWNLOADS/*.deb
