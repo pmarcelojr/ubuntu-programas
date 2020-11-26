@@ -11,7 +11,7 @@ export corlogo="\033[1;34m"
 
 DIR_DOWNLOADS="$HOME/Downloads/programas"
 
-apt_pacotes=(curl unzip apt-transport-https ca-certificates software-properties-common golang snapd gnome-sushi telegram-desktop zsh awscli vim traceroute dotnet-sdk-5.0)
+apt_pacotes=(curl unzip apt-transport-https ca-certificates software-properties-common golang snapd gnome-sushi telegram-desktop zsh awscli vim traceroute)
 
 ### Arquivos deb ###
 URL_CHROME="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
