@@ -119,6 +119,10 @@ do
     fi
 done
 
+### Instalando DotNet SDK 3.1 ###
+sudo apt install dotnet-sdk-3.1
+dotnet --version
+
 ### Atualizando arquivo ~/.profile com variaveis GOLANG ###
 echo export GOPATH=$HOME/go >> ~/.profile
 echo export PATH=$PATH:$GOPATH/bin >> ~/.profile
