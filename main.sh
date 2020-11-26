@@ -123,6 +123,9 @@ done
 sudo apt install dotnet-sdk-3.1
 dotnet --version
 
+### Instalando Oh-My-ZSH ###
+sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+
 ### Atualizando arquivo ~/.profile com variaveis GOLANG ###
 echo export GOPATH=$HOME/go >> ~/.profile
 echo export PATH=$PATH:$GOPATH/bin >> ~/.profile
